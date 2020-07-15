@@ -14,10 +14,10 @@ class App extends Component {
   }
 
   handleFilter = (event) => {
-    const {
+    let {
       target: { value },
     } = event;
-    if (value === "") {
+    if (value === "ALL") {
       this.setState({
         size: value,
         products: data.products,
@@ -33,7 +33,7 @@ class App extends Component {
   };
 
   handleSort = (event) => {
-    const {
+    let {
       target: { value },
     } = event;
     // TO DO: More research on passing the state as the first parameter and sort function
