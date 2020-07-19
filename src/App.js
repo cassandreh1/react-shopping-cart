@@ -2,17 +2,42 @@ import React, { Component } from "react";
 import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
+import Cart from "./components/Cart";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       products: data.products,
+      cartItems: [],
       size: "",
       sort: "",
     };
   }
+  handleRemove = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    this.setState({
+      cartItems: cartItems.filter((item) => item._id !== product._id),
+    });
+  };
 
+  handleAddToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let isInCart = false;
+
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        item.count++;
+        isInCart = true;
+      }
+    });
+    if (!isInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    this.setState({
+      cartItems,
+    });
+  };
   handleFilter = (event) => {
     let {
       target: { value },
@@ -56,7 +81,6 @@ class App extends Component {
         ),
     }));
   };
-
   render() {
     return (
       <div className="grid-container">
@@ -73,9 +97,17 @@ class App extends Component {
                 onFilter={this.handleFilter}
                 onSort={this.handleSort}
               />
-              <Products products={this.state.products} />
+              <Products
+                products={this.state.products}
+                onAddtoCart={this.handleAddToCart}
+              />
             </div>
-            <div className="sidebar">Cart Items</div>
+            <div className="sidebar">
+              <Cart
+                cartItems={this.state.cartItems}
+                onRemove={this.handleRemove}
+              />
+            </div>
           </div>
         </main>
         <footer>All right is reserved.</footer>
