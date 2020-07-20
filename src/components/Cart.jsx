@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import formatCurrency from "../util";
+import Fade from "react-reveal/Fade";
 
 class Cart extends Component {
   constructor(props) {
@@ -64,7 +65,9 @@ class Cart extends Component {
           </div>
         )}
         <div className="cart">
-          <ul className="cart-items">{this.getCartItems()}</ul>
+          <Fade left cascade>
+            <ul className="cart-items">{this.getCartItems()}</ul>
+          </Fade>
         </div>
         {cartItems.length !== 0 && (
           <div>
@@ -86,45 +89,48 @@ class Cart extends Component {
                 </button>
               </div>
             </div>
+            {/* TO DO: create a new checkout form component */}
             {this.state.showCheckout && (
-              <div className="cart">
-                <form onSubmit={this.createOrder}>
-                  <ul className="form-container">
-                    <li>
-                      <label>Email</label>
-                      <input
-                        name="email"
-                        type="email"
-                        required
-                        onChange={this.handleInput}
-                      />
-                    </li>
-                    <li>
-                      <label>Name</label>
-                      <input
-                        name="name"
-                        type="text"
-                        required
-                        onChange={this.handleInput}
-                      />
-                    </li>
-                    <li>
-                      <label>Address</label>
-                      <input
-                        name="address"
-                        type="text"
-                        required
-                        onChange={this.handleInput}
-                      />
-                    </li>
-                    <li>
-                      <button className="button primary" type="submit">
-                        Checkout
-                      </button>
-                    </li>
-                  </ul>
-                </form>
-              </div>
+              <Fade right cascade>
+                <div className="cart">
+                  <form onSubmit={this.createOrder}>
+                    <ul className="form-container">
+                      <li>
+                        <label>Email</label>
+                        <input
+                          name="email"
+                          type="email"
+                          required
+                          onChange={this.handleInput}
+                        />
+                      </li>
+                      <li>
+                        <label>Name</label>
+                        <input
+                          name="name"
+                          type="text"
+                          required
+                          onChange={this.handleInput}
+                        />
+                      </li>
+                      <li>
+                        <label>Address</label>
+                        <input
+                          name="address"
+                          type="text"
+                          required
+                          onChange={this.handleInput}
+                        />
+                      </li>
+                      <li>
+                        <button className="button primary" type="submit">
+                          Checkout
+                        </button>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+              </Fade>
             )}
           </div>
         )}

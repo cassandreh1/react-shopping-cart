@@ -64,7 +64,7 @@ footer {
   flex: 1 20rem;
 }
 
-/* products */
+/* Products */
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -117,7 +117,7 @@ button {
     border: 0.1rem #888 solid;
   }
 }
-/* filter */
+/* Filter */
 .filter {
   display: flex;
   padding: 1rem;
@@ -129,7 +129,7 @@ button {
   }
 }
 
-/* cart */
+/* Cart */
 .cart {
   padding: 1rem;
   margin: 1rem;
@@ -172,7 +172,7 @@ button {
   }
 }
 
-/* checkout form */
+/* Checkout form */
 form {
   width: 100%;
 }
@@ -189,4 +189,26 @@ form {
 input {
   padding: 1rem;
   border: 0.1rem #c0c0c0 solid;
+}
+/* Product modal */
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 96vh;
+  img {
+    max-height: 100vh;
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+}
+.product-details-description {
+  flex: 1 1;
+  margin: 1rem;
+}
+.close-modal {
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  z-index: 1000;
 }
