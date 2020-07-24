@@ -5,17 +5,16 @@ class Filter extends Component {
   render() {
     return (
       <div className="filter">
-        <div className="filter-result">{this.props.count} Products</div>
         <div className="filter-sort">
-          Order{" "}
+          Sort By:{" "}
           <select value={this.props.sort} onChange={this.props.onSort}>
             <option>Latest</option>
-            <option value="lowest">Lowest</option>
-            <option value="highest">Highest</option>
+            <option value="lowest">Price: Low to High</option>
+            <option value="highest">Price: Hight to Low</option>
           </select>
         </div>
         <div className="filter-size">
-          Filter{" "}
+          Size:{" "}
           <select value={this.props.size} onChange={this.props.onFilter}>
             <option value="ALL">ALL</option>
             <option value="XS">XS</option>
@@ -26,6 +25,7 @@ class Filter extends Component {
             <option value="XXL">XXL</option>
           </select>
         </div>
+        <div className="filter-result">{this.props.count} Items</div>
       </div>
     );
   }
